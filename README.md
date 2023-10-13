@@ -7,6 +7,16 @@ In a close future we'll add micro-ros for improve communication between server a
 
 <picture> <img src="https://i.ibb.co/Zf3y1xT/structure.png" width = 500px></picture>
 
+## Microcontroller Code
+
+Install the esp32 cam library on the arduino IDE and the "esp32cam-main" libraly locale on src/libreria_arduino.
+Select the AI thinker esp cam
+You can change the name and password network or create another with the same characteristics.
+<picture> <img src="https://i.ibb.co/5Y5FcD1/WM-Screenshots-20231013165800.png" width = 500px></picture>
+
+Upload the code on the board when it is finished you'll have to enter as a url the ip address the monitor showed, next select the format you want to show on screen.
+<picture> <img src="https://i.ibb.co/G7h6Tkf/face.png" width = 500px></picture>
+
 ## Installation procedure
 
 For the strucutre of the python part of the proyect we are using the python manager rye.
