@@ -101,8 +101,8 @@ while (1):
     cnts4 = cv2.findContours(cara4, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     cnts4 = imutils.grab_contours(cnts4)
 
-    draw_frame("Amarillo", (30, 255, 255), cnts1)
-    draw_frame("Azul", (255, 0, 0), cnts4)
+    draw_frame(1, (30, 255, 255), cnts1)  # Amarrillo
+    draw_frame(2, (255, 0, 0), cnts4)  # Azul
 
     cv2.imshow(winName, frame)
     tecla = cv2.waitKey(1) & 0xFF
