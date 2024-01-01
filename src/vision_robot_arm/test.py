@@ -1,9 +1,5 @@
 import cv2
 import numpy as np
-import time
-import serial
-
-esp = serial.Serial("COM9", 115200)
 
 
 def draw(mask, color, name):
@@ -24,14 +20,13 @@ def draw(mask, color, name):
             cv2.drawContours(frame, [newContour], 0, color, 3)
             # run a function depending on the color
             # Use esp.write and send the name value to the arduino
-            esp.write(name.encode())
-            time.sleep(0.2)
-            esp.close()
+            # esp.write(name.encode())
+            # time.sleep(0.2)
 
 
-# cap = cv2.VideoCapture(0)
-url = 'http://192.168.100.91/cam.mjpeg'
-cap = cv2.VideoCapture(url)  # Crear objeto VideoCapture
+cap = cv2.VideoCapture(0)
+# url = 'http://192.168.100.91/cam.mjpeg'
+# cap = cv2.VideoCapture(url)  # Crear objeto VideoCapture
 
 
 blueDark = np.array([100, 100, 20], np.uint8)
@@ -52,9 +47,9 @@ while True:
         maskRed1 = cv2.inRange(frameHSV, redDark1, redLight1)
         maskRed2 = cv2.inRange(frameHSV, redDark2, redLight2)
         maskRed = cv2.add(maskRed1, maskRed2)
-        draw(maskAzul, (255, 0, 0), 1)  # Azul
-        draw(maskAmarillo, (0, 255, 255), 2)  # Amarillo
-        draw(maskRed, (0, 0, 255), 3)  # Rojo
+        draw(maskAzul, (255, 0, 0), "Azul")  # Azul
+        draw(maskAmarillo, (0, 255, 255), "Amarillo")  # Amarillo
+        draw(maskRed, (0, 0, 255), "Rojo")  # Rojo
         cv2.imshow('frame', frame)
         if cv2.waitKey(1) & 0xFF == ord('s'):
             break
