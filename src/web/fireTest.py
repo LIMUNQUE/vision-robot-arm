@@ -9,7 +9,7 @@ firebase_admin.initialize_app(
     cred, {"databaseURL": "https://cursoesp32-523d8-default-rtdb.firebaseio.com/"})
 
 
-db.reference("/Motor1").set(45)  # Value changed
+# db.reference("/Motor1").set(45)  # Value changed
 
 # At the beginning, get all values from database
 motor1 = db.reference("/Motor1").get()
