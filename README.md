@@ -19,7 +19,8 @@ You can change the name and password network or create another with the same cha
 Upload the code on the board when it is finished you'll have to enter as a url the ip address the monitor showed, next select the format you want to show on screen.
 
 <picture> <img src="https://i.ibb.co/G7h6Tkf/face.png" width = 500px></picture>
-
+## Update
+Due esp32 cam is unable to run a opencv clasification code we decide to use a raspberry pi 4 for this project. The code using the esp32 will continue in this repository.
 ## Installation procedure
 
 For the strucutre of the python part of the proyect we are using the python manager rye.
