@@ -36,6 +36,5 @@ allow-direct-references = true
 
 [tool.rye.scripts]
 # These three options are equivalent:
-dev = "python ./src/vision_robot_arm/__init__.py"
+dev = "python ./src/vision_robot_arm/app.py"
 test = "python ./src/vision_robot_arm/test.py"
-web = "python ./src/vision_robot_arm/web1.py"

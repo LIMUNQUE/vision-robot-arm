@@ -18,19 +18,17 @@ servo1 = 18  # GPIO Pin where sero is connected
 servo2 = 12
 servo3 = 15
 servo4 = 16
-
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(servo1, GPIO.OUT)
 GPIO.setup(servo2, GPIO.OUT)
 GPIO.setup(servo3, GPIO.OUT)
 GPIO.setup(servo4, GPIO.OUT)
 
-
 p1 = GPIO.PWM(servo1, 50)  # PWM channel at 50 Hz frequency
 p2 = GPIO.PWM(servo2, 50)
 p3 = GPIO.PWM(servo3, 50)
 p4 = GPIO.PWM(servo4, 50)
-GPIO.setwarnings(False)
 p1.start(0)  # Zero duty cycle initially
 p2.start(0)
 p3.start(0)
@@ -43,11 +41,10 @@ firebase_admin.initialize_app(
     cred, {"databaseURL": "https://cursoesp32-523d8-default-rtdb.firebaseio.com/"})
 
 # Variables de entorno
-app = Flask(_name_)
+app = Flask(__name__)
 contAzul = 0
 contAmarillo = 0
 manual_control_active = False
-# cap = cv2.VideoCapture(0)
 # Mapas de colores
 blueDark = np.array([100, 100, 20], np.uint8)
 blueLight = np.array([125, 255, 255], np.uint8)
@@ -56,6 +53,8 @@ yelloLight = np.array([45, 255, 255], np.uint8)
 font = cv2.FONT_HERSHEY_SIMPLEX
 # Bloqueo de hilos
 enMovimiento = threading.Lock()
+
+# cap = cv2.VideoCapture(1)
 
 
 def azulDetectado():  # Funcion al detectar un color
@@ -190,9 +189,12 @@ def index():
 
 
 def generate_frames():  # Funcion de captura de video
-    cap = cv2.VideoCapture(0)
+    global cap
+    if cap.isOpened() == False:
+        cap = cv2.VideoCapture(-1)
     while True:
         if db.reference("/Valor").get() == "1":
+            cap.release()
             threading.Thread(target=manualControl).start()
         ret, frame = cap.read()
         if ret:
@@ -251,7 +253,11 @@ def manualControl():
         manual_control_active = False
 
 
-if _name_ == '_main_':
-    # threading.Thread(target=test).start()
-    manualControl()
-    app.run(debug=True)
+cap = cv2.VideoCapture(-1)
+
+if __name__ == '__main__':
+    try:
+        manualControl()
+        app.run(host="0.0.0.0")
+    finally:
+        cap.release()
