@@ -18,13 +18,17 @@ You can change the name and password network or create another with the same cha
 
 Upload the code on the board when it is finished you'll have to enter as a url the ip address the monitor showed, next select the format you want to show on screen.
 
-<picture> <img src="https://i.ibb.co/G7h6Tkf/face.png" width = 500px></picture>
+<picture> <img src="https://i.ibb.co/k2PNPwQ/Whats-App-Image-2023-10-31-at-4-51-04-PM.jpg" width = 500px></picture>
+## ROS version
 
+For Serial & Mobile Robot's signature we made a Ros version of the arm
+
+<picture> <img src="https://i.ibb.co/Bnm67j7/Screenshot-2024-01-16-190937.png" width = 500px></picture>
 
 ## Update
 Due esp32 cam is unable to run a opencv clasification code we decide to use a raspberry pi 4 for this project. The code using the esp32 will continue in this repository.
 
-<picture> <img src="https://i.ibb.co/R3g5sXJ/Whats-App-Image-2024-01-10-at-11-52-02-AM-1.jpg" width = 500px height=600></picture>
+<picture><img src="https://i.ibb.co/R3g5sXJ/Whats-App-Image-2024-01-10-at-11-52-02-AM-1.jpg" width = 500px height=600></picture>
 
 Project already functional
 
